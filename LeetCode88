@@ -1,0 +1,22 @@
+import java.util.Arrays;
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int a = 0;
+        for(int i = m; i < m+n; i++){
+            nums1[i] = nums2[a++];
+
+        }
+        Arrays.sort(nums1);
+    }
+
+    /*def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        a = 0
+        for i in range(m, m+n):
+            nums1[i] = nums2[a]
+            a += 1
+        nums1.sort()
+*/
+}

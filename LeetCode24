@@ -1,0 +1,23 @@
+#Influenced by other submissions on Leetcode's solutions forum.
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        node = head
+        mybool = True
+        prev = ListNode(0)
+        #Edge case for when the length of the LL is 1 or none:
+        if head is None or head.next is None:
+            return head
+
+        while node.next:
+          #  print(node.val)
+            temp = node.next
+            node.next = temp.next
+            temp.next = node
+            prev.next = temp
+            if mybool:
+                head = temp
+                mybool = False
+            if node.next:
+                prev = node
+                node = node.next#node.next, because that is now the .next.next of the original node
+        return head

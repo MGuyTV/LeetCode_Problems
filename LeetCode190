@@ -1,0 +1,23 @@
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        if nums[0] < nums[len(nums) - 1] or len(nums) == 1:#if it is sorted or if it is only length 1
+            return nums[0]
+        left = 0
+        right = len(nums) - 1
+        result = nums[0]#give result the mid index to begin with
+
+        while left <= right:
+            if nums[left] < nums[right]:
+                result = min(nums[left], result)
+                break
+
+
+            mid = (left + right) // 2
+            if nums[mid] >= nums[left]:#In left sorted portion, so search right
+                left = mid + 1
+
+            else:#In right sorted portion, so search left
+                right = mid - 1
+            if nums[mid] < result:
+                result = nums[mid]
+        return result

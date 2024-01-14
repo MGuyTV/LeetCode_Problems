@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        String s = String.valueOf(x);
+        return doWithString(s);
+
+       
+    }
+
+    public boolean doWithString(String string){
+        if(string.length() == 1)
+            return true;
+        if(string.length() == 2 && string.charAt(0) == string.charAt(1))
+            return true;
+        
+        char first = string.charAt(0);
+        char second = string.charAt(string.length() -1);
+        boolean bool = false;//false by default
+        if(first == second){
+            String sub = string.substring(1, string.length() - 1);
+            bool = doWithString(sub);
+        }
+        return bool;
+        
+    }
+}

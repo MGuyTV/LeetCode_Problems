@@ -1,0 +1,14 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        dicts = {}
+        l = 0#left pointer
+        result = 0
+        a = ""
+        for r in range(len(s)):
+            a = s[r]
+            if a in dicts and dicts[a] >= l:
+                l = dicts[a] + 1
+            else:
+                result = max(result, r - l + 1)
+            dicts[a] = r
+        return result

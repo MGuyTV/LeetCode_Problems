@@ -1,0 +1,17 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        dicts = {}
+        array = []
+        for i in nums:
+            if i in dicts:
+                dicts[i] = dicts[i] + 1
+            else:
+                dicts[i] = 1
+      #  array = list(sorted(dicts.keys()))
+        sorted_dict = dict(sorted(dicts.items(), key=lambda item: item[1]))
+        array = list(sorted_dict.keys())
+        #print(array)
+        #print(sorted_dict)
+       # print(array[-k:])
+       # print(dicts)
+        return array[-k:]

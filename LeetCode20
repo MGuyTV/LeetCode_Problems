@@ -1,0 +1,33 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        dicts = {"{" : "}", "(" : ")", "[" : "]"}
+        frequency_dict = {"{" : 0, "}" : 0, "(" : 0, ")" : 0, "[" : 0, "]" : 0}
+        stack = []
+        if len(s) == 1:#Edge case for when we only have one character
+            return False
+        if s[0] in dicts.values():#Edge case for if we start with a close symbol
+            return False
+        print(dicts.keys())
+        for i in s:
+            frequency_dict[i] += 1
+            if i in dicts.keys():#If value matches a key in dicts
+                stack.append(i)
+                continue
+            if i in dicts.values():#If value matches a value in dicts
+                has_close = True
+                print(i)
+                print(len(stack))
+                if len(stack) == 0:
+                    return False
+                if i == "}" and stack[-1] == "{":
+                    stack.pop()#dequeue the queue
+                elif i == ")" and stack[-1] == "(":
+                    stack.pop()#dequeue the queue
+                elif i == "]" and stack[-1] == "[":
+                    stack.pop()#dequeue the queue
+                else:
+                     return False
+        if frequency_dict["{"] == frequency_dict["}"] and frequency_dict["("] == frequency_dict[")"] and frequency_dict["["] == frequency_dict["]"]:
+            return True
+        else:
+            return False

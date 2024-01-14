@@ -1,0 +1,15 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        String string = s.trim();//trim white spaces on the start and ending ends
+        int length = 0;
+        for(int i = string.length() - 1; i >= 0; i--){
+            if(string.charAt(i) != ' '){
+                length += 1;
+            }else{
+                break;
+            }
+
+        }
+        return length;
+    }
+}

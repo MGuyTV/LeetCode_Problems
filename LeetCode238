@@ -1,0 +1,25 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        newArray = [0] * len(nums)
+    
+        hasZero = False
+        total_product = 1
+        for i in range(len(nums)):
+            if nums[i] == 0 and hasZero is False:
+                hasZero = True
+                continue
+            if nums[i] == 0 and hasZero:#If there are multiple zeroes, then everybody gets a zero
+                print("hello")
+                return [0] * len(nums)
+            total_product *= nums[i]
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                newArray[i] = total_product
+            if nums[i] != 0 and hasZero:#If there is only one zero
+                newArray[i] = 0
+            if nums[i] !=0 and hasZero is False:
+               # print(total_product)
+                #print(nums[i])
+                print(i)
+                newArray[i] = int(total_product / nums[i])
+        return newArray

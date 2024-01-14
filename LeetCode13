@@ -1,0 +1,15 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        dicts = {"I" : 1, "V" : 5, "X" : 10, "L" : 50, "C" : 100, "D" : 500, "M" : 1000}
+        if s in dicts:
+            return dicts[s]
+        if len(s) > 1:
+            array = list(s)
+          #  print(array)
+            count = 0
+            for i in range(len(array) -1):
+                if dicts[array[i + 1]] > dicts[array[i]]:
+                    count -= dicts[array[i]]
+                else:
+                    count += dicts[array[i]]
+            return count + dicts[array[-1]]

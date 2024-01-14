@@ -1,0 +1,20 @@
+#Based on Neetcode's solution
+class Solution:
+    
+
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        rob1, rob2 = 0, 0
+        #We need to check for the edge case that rob1 is the first house and rob2 is the last house
+        num1 = self.rob_helper(nums[1:])
+        num2 = self.rob_helper(nums[:-1])
+        return max(num1, num2)
+    
+    def rob_helper(self, nums):
+        rob1, rob2 = 0, 0
+        for n in nums:
+            temp = max(rob1 + n, rob2)
+            rob1 = rob2
+            rob2 = temp
+        return temp

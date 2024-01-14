@@ -1,0 +1,30 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int max = 0;
+        while(left < right){
+            int smallest_height = findMin(height[left], height[right]);
+            int width = right - left;
+            int area = width * smallest_height;
+            if(area > max)
+                max = area;
+            if(height[left] > height[right]){
+                right--;
+            }else if(height[right] > height[left]){
+                left++;
+            }else{
+                left++;
+                right--;//when left and right are equal
+            }
+
+        }
+        return max;
+    }
+
+    public int findMin(int num1, int num2){
+        if(num1 > num2)
+            return num2;
+        return num1;
+    }
+}
